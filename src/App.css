@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  /* background-color: black; */
+
+/* background-color: rgb(255, 0, 82); */
+
+ /* background: url("pet-background.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+
+}
+#main-nav{
+  background-color: rgb(255,47,35);
+}
+.pet-form-div{
+
+  width:25%;
+  margin:auto;
+  
+}
+
+.petcard{
+  display: inline-grid;
+  margin: 1rem 2rem;
+}

@@ -1,0 +1,21 @@
+.login-form{
+    width: 25%;
+    /* background-color: white; */
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 250px;
+    padding: 50px;
+    /* opacity: 0.9; */
+    
+
+}
+
+/* body{
+background: url("./pet-background.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+
