@@ -6,7 +6,8 @@ import FavoritesCard from '../Components/FavoritesCard'
 class FavoritesPage extends React.Component{
 
     state={
-        favoritePets:[]
+        favoritePets:[],
+        viewPetToggle:false
     }
 
 componentDidMount(){
@@ -44,6 +45,7 @@ renderFavorites(){
 
 
           removeHandle={this.removeHandle}
+          // viewPetHandle={this.viewPetHandle}
              />)}
           </div>
 
@@ -75,11 +77,18 @@ renderFavorites(){
         
     } 
 
+    // viewPetHandle=()=>{
+    //   console.log('im working')
+
+    // }
+
 
     render(){
         return(
             <div>
               {this.renderFavorites()}
+
+              {/* {this.state.viewPetToggle?this.viewPetHandle():this.renderFavorites()} */}
             </div>
         );
     }

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import FindPetForm from '../Components/FindPetForm';
 import Navbar from '../Components/Navbar'
 import PetContainer from '../Components/PetContainer'
+import ViewPet from './ViewPet';
 
   var key= 'Hrn3nlUzSUdRWV3Bd0NAQlh6cvuGH6AmRKmgZqB9dEBhsiJBRE'
     var secret='RYLDs3NUOe8yQ0YD3mEPJj1jtuGOYYePSpMrm2nV'
@@ -10,7 +11,9 @@ import PetContainer from '../Components/PetContainer'
 class MainPage extends React.Component{
     state={
         pets:[],
-        searchToggle:false
+        searchToggle:false,
+        viewToggle:false,
+        currentPet:{}
 
     }
 
@@ -118,21 +121,33 @@ class MainPage extends React.Component{
 
     }
 
+     viewPetHandle=(pet)=>{
+      this.setState({viewToggle:true,
+        currentPet:pet
+    })
+      console.log(pet)
+
+     
+
+    }
+
+    // renderPetInfo=(pet)=>{
+    //     return(
+    //     <div>
+    //         <ViewPet/>
+    //     </div>
+    //     )
+
+    // }
+
 
     render(){
         return(
             <div>
                
-        {this.state.searchToggle?<PetContainer pets={this.state.pets} favoriteHandle={this.favoriteHandle}/>:<FindPetForm petInfo={this.state}
+        {this.state.viewToggle?<ViewPet petInfo={this.state.currentPet} favoriteHandle={this.favoriteHandle}/>:this.state.searchToggle?<PetContainer pets={this.state.pets} favoriteHandle={this.favoriteHandle} viewPetHandle={this.viewPetHandle}/>:<FindPetForm petInfo={this.state}
                 searchHandle={this.searchHandle}  
                 />}
-
-              
-
-
-
-
-
             </div>
         );
     }

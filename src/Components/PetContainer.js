@@ -18,7 +18,7 @@ const PetContainer=(props)=>{
             breed={pet.breeds}
             age={pet.age}
 
-
+            viewPetHandle={props.viewPetHandle}
             favoriteHandle={props.favoriteHandle}
         />)}
         

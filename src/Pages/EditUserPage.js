@@ -31,64 +31,69 @@ class EditUserPage extends React.Component{
         password:user.password_digest
       }))
 
-
+      // this.props.logoutHandle()
 
 
     }
-
-
- updateUser=(event)=>{
-  this.setState({
-    ...this.state,
-    [event.target.name]:event.target.value
-
-})
+    
+    
+    updateUser=(event)=>{
+      this.setState({
+        ...this.state,
+        [event.target.name]:event.target.value
+        
+      })
     }
     updateHandle(updatedUser){
-
-        // console.log(updatedUser)
-
-        fetch(`http://localhost:3000/update/`,{
-            method: "PATCH",
-            mode:'cors',
-            credentials:'include',
-            headers:{
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedUser)
-          })
-          .then(res =>res.json())
-          .then(data=> console.log(data))
-
-    }
-
-
-
-    logoutHandle(){
-
-        
-   
-
-        console.log('logging out')
-        let postOptions={
-        method: "DELETE",
-         mode:'cors',
+      
+      // console.log(updatedUser)
+      
+      fetch(`http://localhost:3000/update/`,{
+        method: "PATCH",
+        mode:'cors',
         credentials:'include',
         headers:{
           'Content-Type': 'application/json'
-        
+        },
+        body: JSON.stringify(updatedUser)
+      })
+      .then(res =>res.json())
+      .then(data=> console.log(data))
+      
+    }
+    
+    
+    
+    logoutHandle(){
+      
+     
+      
+      let postOptions={
+        method: "DELETE",
+        mode:'cors',
+        credentials:'include',
+        headers:{
+          'Content-Type': 'application/json'
+          
         }
-
+        
       }
       fetch("http://localhost:3000/logout",postOptions)
       .then(res=>res.json())
-      .then(data=> console.log(data))
-
-
+      .then(data=>this.tests())
       
       
-
+      
+      
+      
+      
+      
     }
+    
+     tests=()=>{
+          // console.log(this.props)
+          console.log('im working')
+        }
 
 
     // redirectHandle(){
@@ -106,7 +111,7 @@ class EditUserPage extends React.Component{
 
     render(){
         return(
-<div>
+<div className='form-div'>
 
             <h3>Edit User Page:</h3>
 <Form>

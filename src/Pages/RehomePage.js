@@ -48,7 +48,7 @@ postPetHandle=(pet)=>{
 
 render(){
 return(
-<div>
+<div className='form-div'>
 
  <h3>Pet Information:</h3>
 <Form>

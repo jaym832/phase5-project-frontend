@@ -53,7 +53,7 @@ body{
 #main-nav{
   background-color: rgb(255,47,35);
 }
-.pet-form-div{
+.form-div{
 
   width:25%;
   margin:auto;
@@ -63,4 +63,10 @@ body{
 .petcard{
   display: inline-grid;
   margin: 1rem 2rem;
+}
+
+.view-dog-image{
+  width: 25%;
+  margin: auto;
+
 }

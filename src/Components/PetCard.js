@@ -58,7 +58,7 @@ class PetCard extends React.Component{
   </ListGroup>
   <Card.Body>
     <Card.Link href="#" onClick={()=>{this.props.favoriteHandle(this.props.pet)}}>Favorite</Card.Link>
-    <Card.Link href="#">View</Card.Link>
+    <Card.Link href="#" onClick={()=>{this.props.viewPetHandle(this.props.pet)}}>View</Card.Link>
   </Card.Body>
 </Card>
 

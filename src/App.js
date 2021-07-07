@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react'
+import React, {useState} from 'react'
 import LoginPage from './Pages/Login/LoginPage'
 import CreateUser from './Pages/CreateUser/CreateUser'
 import MainPage from './Pages/MainPage'
@@ -15,19 +15,24 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
+  useHistory
 } from "react-router-dom";
-class App extends React.Component{
-
-  state={
-    username:'',
-    password:'',
-    loggedin:false
-
-}
+import { NavLink } from 'react-bootstrap';
 
 
-login=(user)=>{
+
+const App  =()=>{
+
+  const[loggedin,setLoggedin]= useState(false);
+  const [thisPageLog,setThisPageLog]=useState(false);
+
+  
+
+
+
+function login(user){
+  
     let postOptions={
         method: "POST",
         mode:'cors',
@@ -41,36 +46,74 @@ login=(user)=>{
       }
       fetch("http://localhost:3000/login",postOptions)
       .then(res=>res.json())
-      .then(data=> data.username?this.setState({loggedin:true}):null)
+      .then(data=> data.username?loginHandle():null)
 
-      console.log(this.state)
 
       }
 
+      
+
+      function loginHandle(){
+        localStorage.setItem("logInToggle",true)
+        setLoggedin(true);
+        setThisPageLog(true);
+
+     
+
+        
+      }
+  function logoutHandle(){
+    console.log('im working')
+    localStorage.setItem("logInToggle",false)
     
-   redirectHandle(){
-      if(this.state.loggedin==true){
+  }
+
+      // React.useEffect(()=>{
+      //   localStorage.setItem("logInToggle",JSON.stringify(loggedin));
+
+
+      // });
+
+      React.useEffect(()=>{
+        const data= localStorage.getItem("logInToggle");
+      
+          setLoggedin(JSON.parse(data));
+
+        
+       
+
+      });
+    
+
+
+  
+
+    
+   function redirectHandle(){
+      if(thisPageLog==true){
         return <Redirect to="/adopt"/>
       }
     }
 
   
-  render () {
+  
     return (
   
       <div>
-   
+    
 
       <BrowserRouter>
-        {this.redirectHandle()}
+        {redirectHandle()}
 
-        {/* {this.state.loggedin? <Navbar/>:null} */}
+        {loggedin? <Navbar/>:null}
+       
+     
 
-        <Navbar loggedin={this.state.loggedin}/>
+        {/* <Navbar loggedin={this.state.loggedin}/> */}
 
     <Switch>
     <Route  exact path='/'>
-    <LoginPage getLogIn={this.login}/>
+    <LoginPage getLogIn={login}/>
     </Route>
 
       <Route  path='/createuser' component={CreateUser}/>
@@ -78,7 +121,14 @@ login=(user)=>{
       <Route  path='/shelters' component={SheltersPage}/>
       <Route  path='/rehome' component={RehomePage}/>
       <Route  path='/pets' component={PetContainer}/>
-      <Route  path='/user' component={EditUserPage}/>
+
+      <Route  path='/user'>
+      <EditUserPage 
+      loggedin={loggedin}
+      logoutHandle={logoutHandle}
+      />
+        </Route>
+
       <Route  path='/mypets' component={RehomeView}/>
 
 
@@ -102,5 +152,5 @@ login=(user)=>{
 );
 }
 
-}
+
 export default App;

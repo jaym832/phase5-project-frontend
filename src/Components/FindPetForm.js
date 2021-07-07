@@ -34,7 +34,7 @@ class FindPetForm extends React.Component{
 
     render(){
         return(
-    <div className="pet-form-div">
+    <div className="form-div">
  
     What kind of companion are you looking for?
         <Form>

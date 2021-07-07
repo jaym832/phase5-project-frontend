@@ -4,7 +4,6 @@ import { Form,Button } from 'react-bootstrap';
 import './Login.css'
 import { Redirect, useParams } from 'react-router';
 
-
 class LoginPage extends React.Component{
     state={
         username:'',
