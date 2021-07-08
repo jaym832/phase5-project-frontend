@@ -1,11 +1,10 @@
 import React from 'react'
-import {Link,Redirect} from "react-router-dom";
+import {Link,Redirect,withRouter} from "react-router-dom";
 import {Form,Button} from 'react-bootstrap'
 
 
 
 class EditUserPage extends React.Component{
-
     state={
       
         username:'',
@@ -79,39 +78,29 @@ class EditUserPage extends React.Component{
         
       }
       fetch("http://localhost:3000/logout",postOptions)
-      .then(res=>res.json())
-      .then(data=>this.tests())
-      
-      
-      
-      
-      
+      .then(this.props.logoutHandle())
+      .then(()=>this.redirectHandle())
       
       
     }
     
-     tests=()=>{
-          // console.log(this.props)
-          console.log('im working')
+    
+
+         redirectHandle(){
+          if(this.props.loggedinInfo==false){
+            
+            this.props.history.push('/');
+         
+          }
+        
         }
-
-
-    // redirectHandle(){
-     
-      
-
-    //   return 
-    //   <div>
-    //   <Redirect to="/adopt"/>
-    //   </div>
-     
-      
-    // }
+ 
 
 
     render(){
         return(
 <div className='form-div'>
+  
 
             <h3>Edit User Page:</h3>
 <Form>
@@ -146,18 +135,22 @@ class EditUserPage extends React.Component{
   </Form.Group>
 
   
-  <Button variant="primary" type='reset'  onClick={()=>{this.updateHandle(this.state)}}>
+  <Button variant="primary"   onClick={()=>{this.updateHandle(this.state)}}>
     Submit
   </Button>
 
 
-  <Button className='logout-button'   onClick={this.logoutHandle}>
+  <Button className='logout-button'   onClick={()=>{this.logoutHandle()}}>
     Logout
   </Button>
+
+  {/* <Button className='logout-button'   onClick={()=>this.props.logoutHandle()}>
+    test
+  </Button> */}
 </Form>
 
             </div>
         );
     }
 }
-export default EditUserPage;
+export default withRouter (EditUserPage);

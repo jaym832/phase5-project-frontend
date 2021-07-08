@@ -65,20 +65,20 @@ class MainPage extends React.Component{
                 url:pet.url,
                 rehome:false
             }
-    let postOptions={
-        method: "POST",
-        mode:'cors',
-        credentials:'include',
-        headers:{
-          'Content-Type': 'application/json'
-        
-        },
-        body: JSON.stringify(newPet)
+             let postOptions={
+            method: "POST",
+            mode:'cors',
+            credentials:'include',
+            headers:{
+            'Content-Type': 'application/json'
+            
+            },
+            body: JSON.stringify(newPet)
 
-      }
-      fetch("http://localhost:3000/newpet",postOptions)
-      .then(res=>res.json())
-      .then(data=> console.log(data))
+              }
+            fetch("http://localhost:3000/newpet",postOptions)
+            .then(res=>res.json())
+            .then(data=> console.log(data))
 
     // console.log(newPet)
         
@@ -98,13 +98,13 @@ class MainPage extends React.Component{
             rehome:false
         }
 
-  let postOptions={
-        method: "POST",
-        mode:'cors',
-        credentials:'include',
-        headers:{
-          'Content-Type': 'application/json'
-        
+         let postOptions={
+            method: "POST",
+            mode:'cors',
+            credentials:'include',
+            headers:{
+            'Content-Type': 'application/json'
+            
         },
         body: JSON.stringify(newPet)
 

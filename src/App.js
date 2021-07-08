@@ -26,6 +26,7 @@ const App  =()=>{
 
   const[loggedin,setLoggedin]= useState(false);
   const [thisPageLog,setThisPageLog]=useState(false);
+  // const histroy= useHistory();
 
   
 
@@ -65,6 +66,7 @@ function login(user){
   function logoutHandle(){
     console.log('im working')
     localStorage.setItem("logInToggle",false)
+    setLoggedin(false);
     
   }
 
@@ -124,7 +126,7 @@ function login(user){
 
       <Route  path='/user'>
       <EditUserPage 
-      loggedin={loggedin}
+      loggedinInfo={loggedin}
       logoutHandle={logoutHandle}
       />
         </Route>

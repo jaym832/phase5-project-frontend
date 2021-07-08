@@ -9,7 +9,8 @@ import Navbar from './Navbar'
 
 class FindPetForm extends React.Component{
     state={
-    
+    gender:'Male',
+    type:'Dog'
 
     }
 
@@ -46,7 +47,7 @@ class FindPetForm extends React.Component{
   <Form.Group controlId="exampleForm.ControlSelect1">
     <Form.Label>Type</Form.Label>
     <Form.Control as="select" name='type' onChange={this.setPet}>
-        <option></option>
+        {/* <option></option> */}
       <option>Dog</option>
       <option>Cat</option>
     </Form.Control>
@@ -60,7 +61,7 @@ class FindPetForm extends React.Component{
    <Form.Group controlId="exampleForm.ControlSelect1">
     <Form.Label>Gender</Form.Label>
     <Form.Control as="select" name="gender" onChange={this.setPet}>
-        <option></option>
+        {/* <option></option> */}
       <option>Male</option>
       <option>Female</option>
     </Form.Control>

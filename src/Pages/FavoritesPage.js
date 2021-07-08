@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import FavoritesCard from '../Components/FavoritesCard'
+import './FavoritesPage.css'
 
 
 class FavoritesPage extends React.Component{
@@ -85,7 +86,7 @@ renderFavorites(){
 
     render(){
         return(
-            <div>
+            <div className='favorites-container'>
               {this.renderFavorites()}
 
               {/* {this.state.viewPetToggle?this.viewPetHandle():this.renderFavorites()} */}

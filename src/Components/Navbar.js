@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import { Nav,NavDropdown,Navbar } from 'react-bootstrap';
+import logo from '../logo2.png'
 
 
 
@@ -13,11 +14,15 @@ return(
                
 
 <Navbar id='main-nav' >
-  <Navbar.Brand href="/adopt">FurEverHomes</Navbar.Brand>
+
+  <Navbar.Brand href="/adopt">
+    {/* <img className='nav-logo' src={logo}></img> */}
+    {/* FurEverHomes */}
+  </Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
-    <Nav.Link href="/adopt">Adopt</Nav.Link>
+    <Nav.Link className='nav-bar-ul-li a' href="/adopt">Adopt</Nav.Link>
       <Nav.Link href="/favorites">Favorites</Nav.Link>
       <Nav.Link href="/shelters">Shelters</Nav.Link>
         <NavDropdown title="Rehome"eventKey={2} href="#memes">
@@ -33,6 +38,10 @@ return(
       </NavDropdown>
     </Nav>
   </Navbar.Collapse>
+
+
+
+  
 </Navbar>
 
 

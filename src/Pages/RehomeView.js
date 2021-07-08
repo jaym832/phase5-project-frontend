@@ -1,5 +1,6 @@
 import React from 'react'
 import RehomeCard from '../Components/RehomeCard'
+import './RehomeView.css'
 
 
 class RehomeView extends React.Component{
@@ -84,7 +85,7 @@ class RehomeView extends React.Component{
 
 render(){
 return(
-    <div>
+    <div className='rehome-container'>
     {this.renderRehoming()}
 
     </div>

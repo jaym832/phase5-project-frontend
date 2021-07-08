@@ -5,7 +5,7 @@ import PetCard from './PetCard'
 
 const PetContainer=(props)=>{
     return(
-        <div>
+        <div className="pet-container">
         {props.pets.map(pet=> <PetCard
             pet={pet}
             key={pet.id}
