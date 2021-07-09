@@ -32,7 +32,7 @@ class MainPage extends React.Component{
     }
 
 
-       searchHandle=(petInfo)=>{
+    searchHandle=(petInfo)=>{
 
         fetch(`https://api.petfinder.com/v2/animals?breed=${petInfo.breed}&location=${petInfo.zipcode}&gender=${petInfo.gender}`, {
 		headers: {
@@ -42,12 +42,40 @@ class MainPage extends React.Component{
 	})
         .then(res=>res.json())
         .then(data=> this.setState({
-            pets:data.animals,
+            pets:[...this.state.pets,data.animals],
             searchToggle:true
         }))
+        .then(this.searchHandle2(petInfo.breed,petInfo.gender))
+
+        
 
     }
 
+    searchHandle2=(petBreed,petGender)=>{
+        let pet={
+            breed:petBreed,
+            gender:petGender
+        }
+        let postOptions={
+        method: "POST",
+        mode:'cors',
+        credentials:'include',
+        headers:{
+          'Content-Type': 'application/json'
+        
+        },
+        body: JSON.stringify(pet)
+        
+      }
+      fetch("http://localhost:3000/findpet",postOptions)
+      .then(res=>res.json())
+      .then(data=> this.setState({
+          pets:[data]
+      }))
+
+
+    }
+    // favorite pet handle for dogs not in the DB
     favoriteHandle(pet){
         
 
@@ -121,6 +149,31 @@ class MainPage extends React.Component{
 
     }
 
+    // favorit handle for pets already in the db
+    favoriteHandle2(pet){
+
+        let postOptions={
+            method: "POST",
+            mode:'cors',
+            credentials:'include',
+            headers:{
+            'Content-Type': 'application/json'
+            
+        },
+        body: JSON.stringify(pet)
+
+      }
+      fetch("http://localhost:3000/newpet",postOptions)
+      .then(res=>res.json())
+      .then(data=> console.log(data))
+
+
+
+    }
+
+
+
+
      viewPetHandle=(pet)=>{
       this.setState({viewToggle:true,
         currentPet:pet
@@ -131,21 +184,14 @@ class MainPage extends React.Component{
 
     }
 
-    // renderPetInfo=(pet)=>{
-    //     return(
-    //     <div>
-    //         <ViewPet/>
-    //     </div>
-    //     )
 
-    // }
 
 
     render(){
         return(
             <div>
                
-        {this.state.viewToggle?<ViewPet petInfo={this.state.currentPet} favoriteHandle={this.favoriteHandle}/>:this.state.searchToggle?<PetContainer pets={this.state.pets} favoriteHandle={this.favoriteHandle} viewPetHandle={this.viewPetHandle}/>:<FindPetForm petInfo={this.state}
+        {this.state.viewToggle?<ViewPet petInfo={this.state.currentPet} favoriteHandle={this.favoriteHandle} favoriteHandle2={this.favoriteHandle2} />:this.state.searchToggle?<PetContainer pets={this.state.pets[1]} pets2 ={this.state.pets[0]}favoriteHandle={this.favoriteHandle } favoriteHandle2={this.favoriteHandle2} viewPetHandle={this.viewPetHandle}/>:<FindPetForm petInfo={this.state}
                 searchHandle={this.searchHandle}  
                 />}
             </div>

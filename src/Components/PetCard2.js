@@ -10,24 +10,7 @@ class PetCard extends React.Component{
 
     renderImages(){
 
-      if(this.props.img[0]){
-
-      return(
-        <div>
-         <Card.Img src={this.props.img[0].full}/>
-        </div>
-    )
-      }
-       if(this.props.img) {
-
-      return(
-        <div>
-         <Card.Img src={this.props.img}/>
-        </div>
-      )
-      }else{
-        console.log('im not here')
-      }
+ 
 
     }
 
@@ -40,7 +23,7 @@ class PetCard extends React.Component{
         
 <Card style={{ width: '18rem' }}>
   <Card.Body>
-    {this.renderImages()}
+         <Card.Img src={this.props.img}/>
  
     <Card.Title>{this.props.name}</Card.Title>
     {/* <Card.Text>
@@ -50,10 +33,10 @@ class PetCard extends React.Component{
   </Card.Body>
   <ListGroup className="list-group-flush">
     <ListGroupItem>{this.props.age}</ListGroupItem>
-    <ListGroupItem>Breed: {this.props.breed.primary}</ListGroupItem>
-        <ListGroupItem>Secondary: {this.props.breed.secondary}</ListGroupItem>
+    <ListGroupItem>Breed:{this.props.breed}</ListGroupItem>
+        <ListGroupItem>Secondary:{this.props.secondary} </ListGroupItem>
 
-    <ListGroupItem>Gender: {this.props.gender}</ListGroupItem>
+    <ListGroupItem>Gender:{this.props.gender} </ListGroupItem>
   </ListGroup>
   <Card.Body>
     <Card.Link href="#" onClick={()=>{this.props.favoriteHandle(this.props.pet)}}>Favorite</Card.Link>

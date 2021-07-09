@@ -28,7 +28,7 @@ return(
               <ListGroupItem>Gender:{this.props.gender} </ListGroupItem>
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#"  >View</Card.Link>
+              <Card.Link href="#"  >Edit</Card.Link>
               <Card.Link href="#" onClick={()=>{this.props.removeHandle(this.props.pet)}}>Remove</Card.Link>
               
             </Card.Body>

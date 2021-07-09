@@ -9,25 +9,51 @@ class ViewPet extends React.Component{
     }
     renderImages(){
 
+        // if(this.props.petInfo.photos[0]){
+  
+        //   return(
+        //     <div >
+    
+        //       {this.props.petInfo.photos.map(img =>         
+        //         <Card.Img  src={img.full}/>
+        //       )}
+    
+        //     </div>
+        // )
+        // }
+        // else{
+        //   return(
+        //   <div >       
+        //   <Card.Img  src={this.props.petInfo.image}/>   
+        //   </div>
+        //   )
+        // }
+      if(this.props.petInfo.photos){
         if(this.props.petInfo.photos[0]){
-  
-        return(
-          <div >
-  
-          {this.props.petInfo.photos.map(img => 
-          
-          <Card.Img  src={img.full}/>
-        //   console.log(img.full)
-        
-          )}
-      
-           {/* <Card.Img src={this.props.img[0].full}/> */}
-          </div>
-      )
-        }
+          return(
+            <div >
+    
+              {this.props.petInfo.photos.map(img =>         
+                <Card.Img  src={img.full}/>
+              )}
+    
+            </div>
+        )
+          }
         else{
-          console.log("im not here")
+          return(
+            console.log('no picture')
+        )
         }
+      }
+      else{
+         return(
+          <div >       
+          <Card.Img  src={this.props.petInfo.image}/>   
+          </div>
+          )
+      }
+
   
       }
  
@@ -38,13 +64,6 @@ class ViewPet extends React.Component{
         return(
           
             <div>
-               {/* <h1>{this.props.petInfo.name}</h1>
-               Age: {this.props.petInfo.age}
-               <br></br>
-               Description: {this.props.petInfo.description}
-               <br></br> */}
-
-
                 <Card className="text-center">
                 <Card.Header></Card.Header>
                 <Card.Body>
@@ -60,7 +79,7 @@ class ViewPet extends React.Component{
                      </Card.Text>
 
                      <Card.Text>
-                     Breeds: {this.props.petInfo.breeds.primary}
+                     Breeds: {this.props.petInfo.breeds?this.props.petInfo.breeds.primary:this.props.petInfo.breed}
                      </Card.Text>
                      <Card.Text>
                      Gender: {this.props.petInfo.gender}
@@ -71,7 +90,7 @@ class ViewPet extends React.Component{
                      </Card.Text>
 
                      <Card.Text>
-                     Species: {this.props.petInfo.species}
+                     Species: {this.props.petInfo.species?this.props.petInfo.species:this.props.petInfo.animal_type}
                      </Card.Text>
 
                      <Card.Text>
@@ -81,7 +100,9 @@ class ViewPet extends React.Component{
 
 
 
-                    <Button variant="primary" onClick={()=>{this.props.favoriteHandle(this.props.petInfo)}}>Favorite</Button>
+                    <Button variant="primary" onClick={()=>{this.props.petInfo.species?this.props.favoriteHandle(this.props.petInfo):this.props.favoriteHandle2(this.props.petInfo)}}>Favorite</Button>
+                    <Button href={this.props.petInfo.url}>Contact</Button>
+
                 </Card.Body>
                 <Card.Footer className="text-muted"></Card.Footer>
                 </Card>
