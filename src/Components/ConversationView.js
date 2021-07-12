@@ -6,7 +6,13 @@ export class ConversationView extends Component {
 
     state={
         body:'',
-        conversationID:this.props.currentConversation.id
+        conversationID:this.props.currentConversation.id,
+        messages: []
+    }
+
+    componentDidMount(){
+        this.setState({messages:this.props.currentConversation.messages})
+
 
     }
 
@@ -29,14 +35,17 @@ export class ConversationView extends Component {
       }
       fetch("http://localhost:3000/newmessage",postOptions)
       .then(res=>res.json())
-      .then(data=> console.log(data))
+      .then(data=> this.setState({messages:[...this.state.messages,data]}))
 
     }
+
+
+
 
     renderMessageDetails=()=>{
             return(
             <div>
-                {this.props.currentConversation.messages.map(message =>(
+                {this.state.messages.map(message =>(
                     
                         <div>
                         <Card.Text>{message.body}</Card.Text>
@@ -73,7 +82,7 @@ export class ConversationView extends Component {
             {this.renderMessageDetails()}
               
                         <Form>
-                              <Form.Control name='body' type="text" onChange={this.setMessage} />
+                            <Form.Control name='body' type="text" placeholder='' onChange={this.setMessage} />
 
                         </Form>
                         <br></br>
