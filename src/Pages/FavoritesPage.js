@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import FavoritesCard from '../Components/FavoritesCard'
+import ViewFavoritesPet from '../Components/ViewFavoritesPet'
 import './FavoritesPage.css'
 
 
@@ -8,7 +9,8 @@ class FavoritesPage extends React.Component{
 
     state={
         favoritePets:[],
-        viewPetToggle:false
+        viewPetToggle:false,
+        currentPet:{}
     }
 
 componentDidMount(){
@@ -46,7 +48,7 @@ renderFavorites(){
 
 
           removeHandle={this.removeHandle}
-          // viewPetHandle={this.viewPetHandle}
+          viewPetHandle={this.viewPetHandle}
              />)}
           </div>
 
@@ -78,14 +80,15 @@ renderFavorites(){
         
     } 
 
-    // viewPetHandle=()=>{
-    //   console.log('im working')
+    viewPetHandle=(petInfo)=>{
+      this.setState({viewPetToggle:true,currentPet:petInfo})
 
-    // }
+    }
 
 
     render(){
         return(
+            this.state.viewPetToggle?<ViewFavoritesPet petInfo={this.state.currentPet}/>:
             <div className='favorites-container'>
               {this.renderFavorites()}
 

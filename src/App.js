@@ -10,6 +10,7 @@ import Navbar from './Components/Navbar'
 import PetContainer from './Components/PetContainer'
 import EditUserPage from './Pages/EditUserPage'
 import RehomeView from './Pages/RehomeView'
+import Messages from './Pages/Messages'
 import {
   BrowserRouter,
   Switch,
@@ -123,6 +124,10 @@ function login(user){
       <Route  path='/shelters' component={SheltersPage}/>
       <Route  path='/rehome' component={RehomePage}/>
       <Route  path='/pets' component={PetContainer}/>
+      <Route  path='/messages' component={Messages}/>
+
+
+
 
       <Route  path='/user'>
       <EditUserPage 

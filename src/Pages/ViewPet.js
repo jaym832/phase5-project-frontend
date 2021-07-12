@@ -1,10 +1,12 @@
 import React from 'react'
 import {Card,Button,ListGroupItem,ListGroup} from 'react-bootstrap'
+import MessageForm from '../Components/MessageForm'
+
 
 
 class ViewPet extends React.Component{
 
-    state={
+    state={messageToggle:false
 
     }
     renderImages(){
@@ -56,13 +58,35 @@ class ViewPet extends React.Component{
 
   
       }
- 
+
+    messageRequestHandle=(petInfo)=>{
+       this.setState({messageToggle:true})
+      //       let postOptions={
+      //       method: "POST",
+      //       mode:'cors',
+      //       credentials:'include',
+      //       headers:{
+      //       'Content-Type': 'application/json'
+            
+      //   },
+      //   body: JSON.stringify(petInfo)
+
+      // }
+      // fetch("http://localhost:3000/newconvo",postOptions)
+      // .then(res=>res.json())
+      // .then(data=> this.setState({
+      //     messageToggle:true
+      // }))
+
+       
+    }
+   
 
 
 
     render(){
         return(
-          
+          this.state.messageToggle?<MessageForm petInfo={this.props.petInfo}/>:
             <div>
                 <Card className="text-center">
                 <Card.Header></Card.Header>
@@ -101,7 +125,7 @@ class ViewPet extends React.Component{
 
 
                     <Button variant="primary" onClick={()=>{this.props.petInfo.species?this.props.favoriteHandle(this.props.petInfo):this.props.favoriteHandle2(this.props.petInfo)}}>Favorite</Button>
-                    <Button href={this.props.petInfo.url}>Contact</Button>
+                    <Button variant="primary" href={this.props.petInfo.url}  onClick={this.props.petInfo.animal_type?()=>{this.messageRequestHandle(this.props.petInfo)}:null}>Contact</Button>
 
                 </Card.Body>
                 <Card.Footer className="text-muted"></Card.Footer>

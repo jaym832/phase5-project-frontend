@@ -13,6 +13,7 @@ class MainPage extends React.Component{
         pets:[],
         searchToggle:false,
         viewToggle:false,
+        messageToggle:false,
         currentPet:{}
 
     }
@@ -34,7 +35,7 @@ class MainPage extends React.Component{
 
     searchHandle=(petInfo)=>{
 
-        fetch(`https://api.petfinder.com/v2/animals?breed=${petInfo.breed}&location=${petInfo.zipcode}&gender=${petInfo.gender}`, {
+        fetch(`https://api.petfinder.com/v2/animals?breed=${petInfo.breed}&location=${petInfo.zipcode}&gender=${petInfo.gender}&limit=30`, {
 		headers: {
 			'Authorization': this.state.data.token_type + ' ' + this.state.data.access_token,
 			'Content-Type': 'application/x-www-form-urlencoded'
@@ -178,11 +179,45 @@ class MainPage extends React.Component{
       this.setState({viewToggle:true,
         currentPet:pet
     })
-      console.log(pet)
 
      
 
     }
+
+
+
+    //    messageRequestHandle=(dogInfo)=>{
+
+    // //     let postOptions={
+    // //         method: "POST",
+    // //         mode:'cors',
+    // //         credentials:'include',
+    // //         headers:{
+    // //         'Content-Type': 'application/json'
+            
+    // //     },
+    // //     body: JSON.stringify(dogInfo)
+
+    // //   }
+    // //   fetch("http://localhost:3000/newconvo",postOptions)
+    // //   .then(res=>res.json())
+    // //   .then(data=> this.setState({
+    // //       messageToggle:true
+    // //   }))
+
+    // // console.log(dogInfo)
+
+    // this.setState({messageToggle:true})
+
+    // // if(this.state.messageToggle==true){
+        
+    // //     return (<div>
+    // //     <MessageForm/>
+    // //     </div>)
+    // //     }    
+    
+
+    // }
 
 
 
@@ -191,7 +226,7 @@ class MainPage extends React.Component{
         return(
             <div>
                
-        {this.state.viewToggle?<ViewPet petInfo={this.state.currentPet} favoriteHandle={this.favoriteHandle} favoriteHandle2={this.favoriteHandle2} />:this.state.searchToggle?<PetContainer pets={this.state.pets[1]} pets2 ={this.state.pets[0]}favoriteHandle={this.favoriteHandle } favoriteHandle2={this.favoriteHandle2} viewPetHandle={this.viewPetHandle}/>:<FindPetForm petInfo={this.state}
+        {this.state.viewToggle?<ViewPet petInfo={this.state.currentPet}  favoriteHandle={this.favoriteHandle} favoriteHandle2={this.favoriteHandle2} />:this.state.searchToggle?<PetContainer pets={this.state.pets[1]} pets2 ={this.state.pets[0]}favoriteHandle={this.favoriteHandle } favoriteHandle2={this.favoriteHandle2} viewPetHandle={this.viewPetHandle}/>:<FindPetForm petInfo={this.state}
                 searchHandle={this.searchHandle}  
                 />}
             </div>

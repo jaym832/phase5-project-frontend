@@ -28,8 +28,8 @@ return(
         <NavDropdown title="Rehome"eventKey={2} href="#memes">
         <NavDropdown.Item href="/rehome">Rehome a pet</NavDropdown.Item>
         <NavDropdown.Item href="/mypets">My pets</NavDropdown.Item>
-
       </NavDropdown>
+      <Nav.Link href="/messages">Messages</Nav.Link>
     </Nav>
     <Nav>
       

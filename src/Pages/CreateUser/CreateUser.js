@@ -35,6 +35,8 @@ class CreateUser extends React.Component{
           fetch("http://localhost:3000/newuser",postOptions)
           .then(res=>res.json())
           .then(data=> console.log(data))
+          
+           this.props.history.push('/');
 
     }
 

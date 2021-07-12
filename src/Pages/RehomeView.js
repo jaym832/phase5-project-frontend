@@ -1,12 +1,16 @@
 import React from 'react'
 import RehomeCard from '../Components/RehomeCard'
 import './RehomeView.css'
+import EditRehomeForm from '../Components/EditRehomeForm'
 
 
 class RehomeView extends React.Component{
 
     state={
-        pets:[]
+        pets:[],
+        editToggle:false,
+        currentPet:{}
+
 
     }
 
@@ -47,6 +51,7 @@ class RehomeView extends React.Component{
 
 
           removeHandle={this.removeHandle}
+          editToggleHandle={this.editToggleHandle}
              />)}
           </div>
 
@@ -80,13 +85,21 @@ class RehomeView extends React.Component{
         
     } 
 
+    editToggleHandle=(petInfo)=>{
+      this.setState({editToggle:true,currentPet:petInfo})
+      console.log(petInfo)
+
+    }
+
 
 
 
 render(){
 return(
+    this.state.editToggle?<EditRehomeForm currentPet={this.state.currentPet}/>:
     <div className='rehome-container'>
-    {this.renderRehoming()}
+
+      {this.renderRehoming()}
 
     </div>
 )
