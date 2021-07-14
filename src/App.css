@@ -37,106 +37,143 @@
   }
 }
 
-body{
+body {
   /* background-color: black; */
 
-/* background-color: rgb(255, 0, 82); */
+  /* background-color: rgb(255, 0, 82); */
 
- /* background: url("pet-background.png") no-repeat center center fixed; 
+  /* background: url("pet-background.png") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */
-
-
 }
-#main-nav{
+#main-nav {
   background-color: rgb(74, 88, 99);
-  
+  padding: 0;
+  height: 55px;
 }
-.form-div{
 
-  width:357px;
-  margin:auto;
+#main-nav a.active {
+  background-color: rgb(50, 59, 66);
+}
+
+#main-nav a:hover {
+  background-color: rgb(50, 59, 66);
+}
+
+.nav-link-container {
+  position: absolute;
+  left: 0px;
+}
+
+.nav-link {
+  height: 55px;
+  padding-top: 17px;
+}
+.form-div {
+  width: 357px;
+  margin: auto;
   background-color: rgba(255, 255, 255, 0.9);
 
   border-radius: 20px;
-  margin-top: 150px;
+  margin-top: 50px;
   padding: 50px;
-
-  
 }
 
-.petcard{
+.errorMessage {
+  color: red;
+}
+
+.petcard {
   display: inline-grid;
   margin: 1rem 2rem;
 }
 
-.view-dog-image{
+.view-dog-image {
   width: 25%;
   margin: auto;
-
 }
-.nav-logo{
+.nav-logo {
   width: 80%;
 }
-.pet-container{
+.pet-container {
   background-color: rgba(255, 255, 255, 0.9);
 
   border-radius: 20px;
- 
+
   padding: 50px;
 }
 
-.google-maps-div{
-/* margin:auto;
+.google-maps-div {
+  /* margin:auto;
   margin-top: 50px; */
   /* margin-left:25%; */
-
 }
 
-.messages-div{
-
-  width:100%;
-  height:1920px;
-  margin:auto;
+.messages-div {
+  width: 100%;
+  height: 1920px;
+  margin: auto;
   background-color: rgba(255, 255, 255, 0.9);
 
   border-radius: 20px;
   padding: 50px;
-  
 }
 
-.convo-delete-button{
-
-  width:90px;
-  position:absolute;
-  top:25px;
-  right:5px;
+.convo-delete-button {
+  width: 90px;
+  position: absolute;
+  top: 25px;
+  right: 5px;
 }
-.convo-view-button{
-
-  width:90px;
-  position:absolute;
-  top:75px;
-  right:5px;
+.convo-view-button {
+  width: 90px;
+  position: absolute;
+  top: 75px;
+  right: 5px;
 }
 
-.conversation-card-div{
-  height:125px;
+.conversation-card-div {
+  height: 125px;
+  width: 600px;
+  margin: auto;
+  /* text-align: center; */
+  /* padding-top: 50px; */
+  margin-top: 10px;
 }
 
-Button{
-  margin:4px
-
-}
-.rehome-container{
-  width:100%;
-  height:1920px;
-
+.message-title-div {
+  width: 400px;
 }
 
-.favorites-container{
-  width:100%;
-  height:1920px;
+Button {
+  margin: 4px;
 }
+.rehome-container {
+  width: 100%;
+  height: 1920px;
+}
+
+.favorites-container {
+  width: 100%;
+  height: 1920px;
+}
+
+.conversation-view-div {
+  /* text-align: center; */
+}
+.messages-form-body {
+  width: 500px;
+  margin: auto;
+}
+.messages-form-div {
+  height: 50px;
+  /* width: 300px; */
+  margin: auto;
+  margin-top: 30px;
+}
+
+/* button {
+  background-color: #282c34;
+} */

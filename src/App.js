@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import LoginPage from './Pages/Login/LoginPage'
 import CreateUser from './Pages/CreateUser/CreateUser'
 import MainPage from './Pages/MainPage'
@@ -23,140 +23,141 @@ import { NavLink } from 'react-bootstrap';
 
 
 
-const App  =()=>{
+const App = () => {
 
-  const[loggedin,setLoggedin]= useState(false);
-  const [thisPageLog,setThisPageLog]=useState(false);
+  const [loggedin, setLoggedin] = useState(false);
+  const [thisPageLog, setThisPageLog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   // const histroy= useHistory();
 
-  
 
 
 
-function login(user){
-  
-    let postOptions={
-        method: "POST",
-        mode:'cors',
-        credentials:'include',
-        headers:{
-          'Content-Type': 'application/json'
-        
-        },
-        body: JSON.stringify(user)
 
-      }
-      fetch("http://localhost:3000/login",postOptions)
-      .then(res=>res.json())
-      .then(data=> data.username?loginHandle():null)
+  function login(user) {
+
+    let postOptions = {
+      method: "POST",
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+
+      },
+      body: JSON.stringify(user)
+
+    }
+    fetch("http://localhost:3000/login", postOptions)
+      .then(res => res.json())
+      .then(data => data.username ? loginHandle() : setErrorMessage(data.errors))
 
 
-      }
-
-      
-
-      function loginHandle(){
-        localStorage.setItem("logInToggle",true)
-        setLoggedin(true);
-        setThisPageLog(true);
-
-     
-
-        
-      }
-  function logoutHandle(){
-    console.log('im working')
-    localStorage.setItem("logInToggle",false)
-    setLoggedin(false);
-    
   }
 
-      // React.useEffect(()=>{
-      //   localStorage.setItem("logInToggle",JSON.stringify(loggedin));
 
 
-      // });
-
-      React.useEffect(()=>{
-        const data= localStorage.getItem("logInToggle");
-      
-          setLoggedin(JSON.parse(data));
-
-        
-       
-
-      });
-    
+  function loginHandle() {
+    localStorage.setItem("logInToggle", true)
+    setLoggedin(true);
+    setThisPageLog(true);
 
 
-  
 
-    
-   function redirectHandle(){
-      if(thisPageLog==true){
-        return <Redirect to="/adopt"/>
-      }
+
+  }
+  function logoutHandle() {
+    console.log('im working')
+    localStorage.setItem("logInToggle", false)
+    setLoggedin(false);
+
+  }
+
+  // React.useEffect(()=>{
+  //   localStorage.setItem("logInToggle",JSON.stringify(loggedin));
+
+
+  // });
+
+  React.useEffect(() => {
+    const data = localStorage.getItem("logInToggle");
+
+    setLoggedin(JSON.parse(data));
+
+
+
+
+  });
+
+
+
+
+
+
+  function redirectHandle() {
+    if (thisPageLog == true) {
+      return <Redirect to="/adopt" />
     }
+  }
 
-  
-  
-    return (
-  
-      <div>
-    
+
+
+  return (
+
+    <div>
+
 
       <BrowserRouter>
         {redirectHandle()}
 
-        {loggedin? <Navbar/>:null}
-       
-     
+        {loggedin ? <Navbar /> : null}
+
+
 
         {/* <Navbar loggedin={this.state.loggedin}/> */}
 
-    <Switch>
-    <Route  exact path='/'>
-    <LoginPage getLogIn={login}/>
-    </Route>
+        <Switch>
+          <Route exact path='/'>
+            <LoginPage getLogIn={login} errorMessage={errorMessage} />
+          </Route>
 
-      <Route  path='/createuser' component={CreateUser}/>
-      <Route  path='/favorites' component={FavoritesPage}/>
-      <Route  path='/shelters' component={SheltersPage}/>
-      <Route  path='/rehome' component={RehomePage}/>
-      <Route  path='/pets' component={PetContainer}/>
-      <Route  path='/messages' component={Messages}/>
-
-
-
-
-      <Route  path='/user'>
-      <EditUserPage 
-      loggedinInfo={loggedin}
-      logoutHandle={logoutHandle}
-      />
-        </Route>
-
-      <Route  path='/mypets' component={RehomeView}/>
-
-
-
-      <Route  path='/adopt' >
-      <MainPage />
-      </Route>
+          <Route path='/createuser' component={CreateUser} />
+          <Route path='/favorites' component={FavoritesPage} />
+          <Route path='/shelters' component={SheltersPage} />
+          <Route path='/rehome' component={RehomePage} />
+          <Route path='/pets' component={PetContainer} />
+          <Route path='/messages' component={Messages} />
 
 
 
 
+          <Route path='/user'>
+            <EditUserPage
+              loggedinInfo={loggedin}
+              logoutHandle={logoutHandle}
+            />
+          </Route>
 
-    </Switch>
-    
-    
+          <Route path='/mypets' component={RehomeView} />
 
-    
-    </BrowserRouter>
-      </div>
 
-);
+
+          <Route path='/adopt' >
+            <MainPage />
+          </Route>
+
+
+
+
+
+        </Switch>
+
+
+
+
+      </BrowserRouter>
+    </div>
+
+  );
 }
 
 

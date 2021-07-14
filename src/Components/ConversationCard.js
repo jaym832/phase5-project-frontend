@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
-import { Form,Button,Card } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 
 
 export class ConversationCard extends Component {
-        state={
-            messageToggle:false,
-            
-        }
+    state = {
+        messageToggle: false,
 
-    renderMessages=()=>{
+    }
 
-        return(
+    renderMessages = () => {
+
+        return (
             <div>
-            {this.props.messages.map(message =>(
-                <div>
-            <Card.Body>{message.body}</Card.Body>
-            </div>
-            ))}
-            
-            
+                {this.props.messages.map(message => (
+                    <div>
+                        <Card.Body>{message.body}</Card.Body>
+                    </div>
+                ))}
+
+
             </div>
         )
     }
@@ -48,19 +48,22 @@ export class ConversationCard extends Component {
     // }
 
 
- 
+
 
     render() {
         return (
 
             <div>
-    
-                <Card className='conversation-card-div' >
-                  <Card.Body>{this.props.messageTitle.body}</Card.Body>
 
-                  <Button className="convo-delete-button" onClick={()=>this.props.deleteHandle(this.props.conversation)}>delete</Button>
-                  <br></br>
-                <Button onClick={()=>this.props.viewMessageHandle(this.props.conversation)} className="convo-view-button" >View</Button>
+                <Card className='conversation-card-div' >
+                    <div className='message-title-div'>
+
+                        <h5>{this.props.messageTitle.body}</h5>
+                    </div>
+
+                    <Button className="convo-delete-button" onClick={() => this.props.deleteHandle(this.props.conversation)}>delete</Button>
+                    <br></br>
+                    <Button onClick={() => this.props.viewMessageHandle(this.props.conversation)} className="convo-view-button" >View</Button>
 
                 </Card>
             </div>

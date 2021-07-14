@@ -1,66 +1,66 @@
 import React, { Component } from 'react'
-import { Form,Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 
 export class MessageForm extends Component {
 
-state={
-    body:'',
-    pet:this.props.petInfo
-}
+    state = {
+        body: '',
+        pet: this.props.petInfo
+    }
 
 
-submitMessageHandle=()=>{
+    submitMessageHandle = () => {
 
-    let obj=this.state
+        let obj = this.state
 
-           let postOptions={
+        let postOptions = {
             method: "POST",
-            mode:'cors',
-            credentials:'include',
-            headers:{
-            'Content-Type': 'application/json'
-            
-        },
-        body: JSON.stringify(obj)
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
 
-      }
-      fetch("http://localhost:3000/newconvo",postOptions)
-      .then(res=>res.json())
-      .then(data=> console.log(data))
+            },
+            body: JSON.stringify(obj)
 
-
+        }
+        fetch("http://localhost:3000/newconvo", postOptions)
+            .then(res => res.json())
+            .then(data => console.log(data))
 
 
-}
 
- setMessage=(event)=>{
+
+    }
+
+    setMessage = (event) => {
         this.setState({
             ...this.state,
-            [event.target.name]:event.target.value
-        
+            [event.target.name]: event.target.value
+
         })
-          
+
     }
 
 
 
- 
 
-    
+
+
     render() {
         return (
             <div className='form-div'>
                 <Form>
 
-  <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Message:</Form.Label>
-    <Form.Control name='body' as="textarea" rows={3} onChange={this.setMessage}/>
-  </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Message:</Form.Label>
+                        <Form.Control name='body' as="textarea" rows={3} onChange={this.setMessage} />
+                    </Form.Group>
 
 
-  <Button onClick={()=>this.submitMessageHandle()}>send</Button>
-</Form>
+                    <Button onClick={() => this.submitMessageHandle()}>send</Button>
+                </Form>
             </div>
         )
     }
