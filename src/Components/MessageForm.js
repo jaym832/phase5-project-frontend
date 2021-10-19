@@ -40,6 +40,7 @@ export class MessageForm extends Component {
             [event.target.name]: event.target.value
 
         })
+        // event.target.reset();
 
     }
 

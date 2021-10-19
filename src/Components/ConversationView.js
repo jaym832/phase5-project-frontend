@@ -62,11 +62,14 @@ export class ConversationView extends Component {
     }
 
     setMessage = (event) => {
+
         this.setState({
             ...this.state,
             [event.target.name]: event.target.value
 
         })
+
+
 
     }
 
